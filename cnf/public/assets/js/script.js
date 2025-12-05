@@ -128,3 +128,113 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// Back to Top functionality
+const backToTopButton = document.querySelector('.back-to-top');
+if (backToTopButton) {
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Newsletter form submission
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+        const email = emailInput.value;
+        
+        if (!email) {
+            alert('Please enter your email address');
+            return;
+        }
+        
+        if (!isValidEmail(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+        
+        // In a real application, you would submit to server here
+        alert('Thank you for subscribing to our newsletter!');
+        emailInput.value = '';
+    });
+}
+
+// Email validation function
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Smooth scroll for footer links
+document.querySelectorAll('.footer a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        if (href !== '#' && href.startsWith('#') && document.querySelector(href)) {
+            e.preventDefault();
+            
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+});
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Initialize navbar on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    }
+    
+    // Mobile menu close on click
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse.classList.contains('show')) {
+                new bootstrap.Collapse(navbarCollapse).hide();
+            }
+        });
+    });
+    
+    // Dropdown hover for desktop
+    if (window.innerWidth >= 992) {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', function() {
+                this.querySelector('.dropdown-toggle').classList.add('show');
+                this.querySelector('.dropdown-menu').classList.add('show');
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                this.querySelector('.dropdown-toggle').classList.remove('show');
+                this.querySelector('.dropdown-menu').classList.remove('show');
+            });
+        });
+    }
+});

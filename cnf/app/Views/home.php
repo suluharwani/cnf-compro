@@ -8,7 +8,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <h1 class="hero-title"><?= $translations['hero_title'] ?? $companyInfo['hero_title'] ?? 'Premium Furniture Manufacturer' ?></h1>
-                <h2 class="hero-subtitle"><?= $translations['hero_subtitle'] ?? $companyInfo['hero_subtitle'] ?? 'Crafting Excellence Since 2005' ?></h2>
+                <h2 class="hero-subtitle"><?= $translations['hero_subtitle'] ?? $companyInfo['hero_subtitle'] ?? 'Crafting Excellence Since 2001' ?></h2>
                 <p class="hero-description"><?= $translations['hero_description'] ?? $companyInfo['hero_description'] ?? 'Specializing in high-quality upholstery and wooden furniture from Jepara' ?></p>
                 <div class="hero-buttons mt-4">
                     <a href="<?= base_url('download-catalog') ?>" class="btn btn-primary btn-lg me-3">

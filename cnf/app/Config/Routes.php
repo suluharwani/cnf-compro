@@ -14,7 +14,8 @@ $routes->get('/', 'Home::index');
 $routes->get('career', 'Home::career');
 $routes->get('lang/(:segment)', 'Home::switchLanguage/$1');
 $routes->get('download-catalog', 'Home::downloadCatalog');
-
+$routes->get('about', 'Home::about');
+$routes->get('gallery', 'Home::gallery');
 // Admin routes (optional)
 $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('translations', 'Admin\TranslationController::index');
